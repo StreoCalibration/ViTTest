@@ -2,7 +2,7 @@ import argparse
 import os
 import yaml
 
-from swin_aoi_system.engine.trainer import run_training
+from engine.trainer import run_training
 
 
 def main(args):

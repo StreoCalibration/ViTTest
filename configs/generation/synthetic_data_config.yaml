@@ -3,14 +3,14 @@
 # source: 원본 데이터 경로
 source:
   # 배경으로 사용될 정상 제품 이미지들이 있는 디렉토리
-  base_image_dir: 'swin_aoi_system/dataset_root/real_data' # 중요: 이 경로에 실제 배경 이미지가 있어야 합니다.
+  base_image_dir: 'dataset_root/real_data' # 중요: 이 경로에 실제 배경 이미지가 있어야 합니다.
   # 합성에 사용될 결함 템플릿(투명 배경의 PNG 권장)들이 있는 디렉토리
-  defect_template_dir: 'swin_aoi_system/dataset_root/defect_templates' # 중요: 이 경로에 실제 결함 템플릿 이미지가 있어야 합니다.
+  defect_template_dir: 'dataset_root/defect_templates' # 중요: 이 경로에 실제 결함 템플릿 이미지가 있어야 합니다.
 
 # output: 생성된 데이터가 저장될 경로
 output:
-  image_dir: 'swin_aoi_system/dataset_root/synthetic_data/images' # --output-dir 인자로 덮어쓸 수 있습니다.
-  annotation_dir: 'swin_aoi_system/dataset_root/synthetic_data/annotations' # --output-dir 인자로 덮어쓸 수 있습니다.
+  image_dir: 'dataset_root/synthetic_data/images' # --output-dir 인자로 덮어쓸 수 있습니다.
+  annotation_dir: 'dataset_root/synthetic_data/annotations' # --output-dir 인자로 덮어쓸 수 있습니다.
 
 # generation: 생성 옵션
 generation:

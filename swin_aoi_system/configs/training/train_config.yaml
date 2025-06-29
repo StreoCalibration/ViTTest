@@ -1,8 +1,0 @@
-# Training Configuration
-data:
-  data_source: 'synthetic' # 'real_data', 'synthetic_data', or 'mixed'
-  root_dir: 'swin_aoi_system/dataset_root'
-
-optimizer:
-  type: 'AdamW'
-  lr: 0.0001

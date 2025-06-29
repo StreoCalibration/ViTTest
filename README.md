@@ -35,7 +35,7 @@
 정상 이미지와 결함 템플릿을 합성하여 학습에 사용할 가상 데이터를 생성합니다. **이때 모듈 이름에 `.py`를 붙이지 않도록 주의하세요.**
 
 ```bash
-python -m swin_aoi_system.generate_synthetic_data --config swin_aoi_system/configs/generation/synthetic_data_config.yaml
+python -m generate_synthetic_data --config configs/generation/synthetic_data_config.yaml
 ```
 *   생성된 데이터는 `dataset_root/synthetic_data/`에 저장됩니다.
 
@@ -44,5 +44,5 @@ python -m swin_aoi_system.generate_synthetic_data --config swin_aoi_system/confi
 준비된 데이터를 사용하여 모델을 학습합니다.
 
 ```bash
-python -m swin_aoi_system.train --config swin_aoi_system/configs/training/train_config.yaml
+python -m train --config configs/training/train_config.yaml
 ```
