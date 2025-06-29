@@ -50,11 +50,16 @@ def make_random_defect(defect_size):
     return defect
 
 def make_example_defect_template(real_data_dir, defect_template_dir, num_templates=5):
+    if not os.path.isdir(real_data_dir):
+        print(f"[오류] 배경 이미지 디렉토리를 찾을 수 없습니다: {os.path.abspath(real_data_dir)}")
+        print("프로젝트 루트에 'dataset_root/real_data' 폴더를 만들고 이미지를 추가해주세요.")
+        return
+
     # real_data 폴더에서 첫 번째 이미지를 찾음
     supported_formats = ('.png', '.jpg', '.jpeg', '.bmp')
     real_images = [f for f in os.listdir(real_data_dir) if f.lower().endswith(supported_formats)]
     if not real_images:
-        print(f"real_data 폴더에 이미지가 없습니다: {real_data_dir}")
+        print(f"[오류] 배경 이미지 디렉토리 '{os.path.abspath(real_data_dir)}'에 이미지가 없습니다.")
         return
 
     # 첫 번째 이미지를 열어서 결함 템플릿 크기 결정
@@ -71,7 +76,7 @@ def make_example_defect_template(real_data_dir, defect_template_dir, num_templat
         print(f"예제 defect template 저장됨: {defect_path}")
 
 if __name__ == "__main__":
-    script_dir = os.path.dirname(__file__)
-    real_data_dir = os.path.join(script_dir, "dataset_root", "real_data")
-    defect_template_dir = os.path.join(script_dir, "dataset_root", "defect_templates")
+    # 스크립트가 프로젝트 루트에서 `python -m`으로 실행된다고 가정하고 경로를 설정합니다.
+    real_data_dir = os.path.join("dataset_root", "real_data")
+    defect_template_dir = os.path.join("dataset_root", "defect_templates")
     make_example_defect_template(real_data_dir, defect_template_dir, num_templates=5)

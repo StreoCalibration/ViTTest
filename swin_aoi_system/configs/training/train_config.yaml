@@ -1,8 +1,0 @@
-# Training Configuration
-data:
-  source: 'mixed' # 'real', 'synthetic', or 'mixed'
-  root_dir: './dataset_root'
-
-optimizer:
-  type: 'AdamW'
-  lr: 0.0001

@@ -1,0 +1,13 @@
+# Training Configuration
+data:
+  data_source: 'synthetic' # 'real_data', 'synthetic_data', or 'mixed'
+  root_dir: 'dataset_root' # 프로젝트 루트에서 실행되므로 경로 수정
+
+optimizer:
+  type: 'AdamW'
+  lr: 0.0001
+
+# 학습 관련 설정 추가
+training:
+  num_epochs: 10 # 학습할 에포크 수
+  output_dir: 'outputs/training_results' # 모델 체크포인트 및 결과 저장 디렉토리
