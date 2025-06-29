@@ -1,0 +1,4 @@
+# Swin Transformer V2 Base Model Configuration
+model:
+  type: 'SwinTransformerV2'
+  # ... other model parameters

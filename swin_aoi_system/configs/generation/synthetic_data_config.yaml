@@ -1,0 +1,23 @@
+# 가상 데이터 생성 관련 설정
+
+# source: 원본 데이터 경로
+source:
+  # 배경으로 사용될 정상 제품 이미지들이 있는 디렉토리
+  base_image_dir: 'dataset_root/real_data'
+  # 합성에 사용될 결함 템플릿(투명 배경의 PNG 권장)들이 있는 디렉토리
+  defect_template_dir: 'dataset_root/defect_templates'
+
+# output: 생성된 데이터가 저장될 경로
+output:
+  image_dir: 'dataset_root/synthetic_data/images'
+  annotation_dir: 'dataset_root/synthetic_data/annotations'
+
+# generation: 생성 옵션
+generation:
+  num_images: 1000  # 생성할 총 이미지 수
+  max_defects_per_image: 3 # 이미지 당 최대 결함 수
+  augmentation: # 결함에 적용할 증강 범위
+    scale_range: [0.05, 0.15]      # 배경 이미지 너비 대비 결함 크기 비율
+    rotation_range: [0, 360]       # 회전 각도 (도)
+    brightness_range: [0.8, 1.2]   # 밝기 조절 비율
+    contrast_range: [0.8, 1.2]     # 대비 조절 비율
