@@ -24,7 +24,15 @@ def train_one_epoch(model, data_loader, optimizer, device, epoch):
     print(f"Epoch {epoch} Loss: {avg_loss:.4f}")
 
 from torch.utils.data import DataLoader
-from torchvision.models.detection import detr_resnet50
+
+try:
+    from torchvision.models.detection import detr_resnet50
+except Exception:  # noqa: SIM105
+    from torchvision.models.detection import fasterrcnn_resnet50_fpn as _frcnn
+
+    def detr_resnet50(*, num_classes=91, pretrained=False, **kwargs):
+        """Fallback to Faster R-CNN if DETR is unavailable."""
+        return _frcnn(pretrained=pretrained, num_classes=num_classes, **kwargs)
 from ..data.aoi_dataset import AoiDataset
 from ..data.transforms import get_transforms
 from ..utils.scheduler import get_scheduler

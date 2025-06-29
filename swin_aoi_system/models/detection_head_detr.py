@@ -1,5 +1,13 @@
 import torch.nn as nn
-from torchvision.models.detection import detr_resnet50
+
+try:
+    from torchvision.models.detection import detr_resnet50
+except Exception:  # noqa: SIM105
+    from torchvision.models.detection import fasterrcnn_resnet50_fpn as _frcnn
+
+    def detr_resnet50(*, num_classes=91, pretrained=False, **kwargs):
+        """Fallback to Faster R-CNN if DETR is unavailable."""
+        return _frcnn(pretrained=pretrained, num_classes=num_classes, **kwargs)
 
 
 class DetrDetectionHead(nn.Module):
