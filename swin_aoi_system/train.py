@@ -1,7 +1,7 @@
 import argparse
 import yaml
 
-from .engine.trainer import run_training
+from swin_aoi_system.engine.trainer import run_training
 
 
 def main(args):

@@ -4,7 +4,7 @@ import os
 # data 패키지에서 SyntheticDataGenerator 클래스를 임포트합니다.
 import traceback
 import glob
-from data.synthetic_generator import SyntheticDataGenerator
+from swin_aoi_system.data.synthetic_generator import SyntheticDataGenerator
 
 def main(args):
     """Main function to generate synthetic data."""
