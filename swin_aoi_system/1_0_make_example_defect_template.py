@@ -71,6 +71,7 @@ def make_example_defect_template(real_data_dir, defect_template_dir, num_templat
         print(f"예제 defect template 저장됨: {defect_path}")
 
 if __name__ == "__main__":
-    real_data_dir = "dataset_root/real_data"
-    defect_template_dir = "dataset_root/defect_templates"
+    script_dir = os.path.dirname(__file__)
+    real_data_dir = os.path.join(script_dir, "dataset_root", "real_data")
+    defect_template_dir = os.path.join(script_dir, "dataset_root", "defect_templates")
     make_example_defect_template(real_data_dir, defect_template_dir, num_templates=5)

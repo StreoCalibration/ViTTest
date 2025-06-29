@@ -21,5 +21,6 @@ def clear_folder(folder_path):
                 print(f"폴더 삭제 실패: {file_path} - {e}")
 
 if __name__ == "__main__":
-    base_dir = "dataset_root/synthetic_data"
+    script_dir = os.path.dirname(__file__)
+    base_dir = os.path.join(script_dir, "dataset_root", "synthetic_data")
     clear_folder(base_dir)
