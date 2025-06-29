@@ -1,6 +1,7 @@
+# 경로 문제를 방지하기 위해 os 모듈을 사용합니다.
 import argparse
-import yaml
 import os
+import yaml
 # data 패키지에서 SyntheticDataGenerator 클래스를 임포트합니다.
 import traceback
 import glob
@@ -19,7 +20,19 @@ def main(args):
         print(f"Error loading or parsing config file: {e}")
         return
 
-    # 2. Override config values with command-line arguments if provided
+    # 2. Convert relative paths to absolute paths based on this file location
+    script_dir = os.path.dirname(__file__)
+    for key in ("base_image_dir", "defect_template_dir"):
+        path = config.get("source", {}).get(key)
+        if path and not os.path.isabs(path):
+            config["source"][key] = os.path.join(script_dir, path)
+
+    for key in ("image_dir", "annotation_dir"):
+        path = config.get("output", {}).get(key)
+        if path and not os.path.isabs(path):
+            config["output"][key] = os.path.join(script_dir, path)
+
+    # 3. Override config values with command-line arguments if provided
     if args.num_images is not None:
         config['generation']['num_images'] = args.num_images
 
