@@ -3,6 +3,7 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+dataset_root/
 
 # Jupyter Notebook 체크포인트
 .ipynb_checkpoints/
