@@ -27,7 +27,7 @@
     만약 사용할 결함 템플릿이 없다면, 아래 명령어를 실행하여 예제 템플릿(타원, 사각형, 선 등)을 자동으로 생성할 수 있습니다.
 
     ```bash
-    python -m swin_aoi_system.make_example_defect_template
+    python -m make_example_defect_template
     ```
 
 ### 2. 가상 데이터 생성 (Synthetic Data Generation)
@@ -38,6 +38,7 @@
 python -m generate_synthetic_data --config configs/generation/synthetic_data_config.yaml
 ```
 *   생성된 데이터는 `dataset_root/synthetic_data/`에 저장됩니다.
+*   필요 시 `python 0_clear_synthetic_data.py` 명령으로 기존 가상 데이터를 모두 삭제할 수 있습니다.
 
 ### 3. 모델 학습 (Model Training)
 

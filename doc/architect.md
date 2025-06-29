@@ -62,39 +62,38 @@
 * [cite_start]**주요 라이브러리:** PyTorch, torchvision, mmcv, mmdetection [cite: 1464][cite_start], mmsegmentation [cite: 1471], Pillow, tqdm
 * **제안 패키지 구조 (v0.2):**
     ```python
-    swin_aoi_system/
-    ├── configs/                 # 모델, 학습, 데이터 관련 설정 파일 (e.g., yaml)
-    │   ├── model/swin_v2_base.yaml
-    │   └── training/train_config.yaml
-    ├── data/                    # 데이터셋 로딩 및 전처리
+    configs/                 # 모델, 학습, 데이터 관련 설정 파일 (e.g., yaml)
+    ├── model/swin_v2_base.yaml
+    └── training/train_config.yaml
+    data/                    # 데이터셋 로딩 및 전처리
     │   ├── __init__.py
     │   ├── aoi_dataset.py       # PyTorch Dataset 클래스 (실제/가상 데이터 로드)
     │   ├── transforms.py        # 이미지 증강 및 변환 로직
     │   ├── synthetic_generator.py # (신규) SyntheticDataGenerator 모듈
     │   └── generate_synthetic_data.py # (신규) 가상 데이터 생성 실행 스크립트
-    ├── models/                  # 모델 아키텍처
+    models/                  # 모델 아키텍처
     │   ├── __init__.py
     │   ├── backbone_swin_v2.py  # Swin Transformer V2 백본 구현
     │   ├── attention.py         # Scaled Cosine Attention 등 어텐션 모듈
     │   ├── detection_head_detr.py # (구체화) DETR 스타일 Decoder 및 FFN 헤드
     │   └── layers.py            # PatchMerging, MLP 등 기본 레이어
-    ├── engine/                  # 학습 및 추론 엔진
+    engine/                  # 학습 및 추론 엔진
     │   ├── __init__.py
     │   ├── trainer.py           # 학습 루프 및 오케스트레이션
     │   ├── predictor.py         # 추론 로직
     │   └── losses.py            # (구체화) Hungarian Matcher 및 관련 손실 함수
-    ├── utils/                   # 보조 유틸리티
+    utils/                   # 보조 유틸리티
     │   ├── __init__.py
     │   ├── gpu_optimizer.py     # ZeRO, Activation Checkpointing 등 메모리 최적화 유틸
     │   ├── scheduler.py         # 학습률 스케줄러
     │   └── visualizer.py        # 결과 시각화 유틸
-    ├── dataset_root/            # (신규) 데이터 루트 디렉토리
+    dataset_root/            # (신규) 데이터 루트 디렉토리
     │   ├── real_data/           # 실제 촬영된 이미지 및 어노테이션
     │   ├── defect_templates/    # (신규) 다양한 형태의 이물 템플릿 이미지 (랜덤 생성 가능)
     │   └── synthetic_data/      # 가상으로 생성된 이미지 및 어노테이션
-    ├── train.py                 # 모델 학습 스크립트
-    ├── evaluate.py              # 모델 평가 스크립트
-    └── inference.py             # 단일 이미지 추론 스크립트
+    train.py                 # 모델 학습 스크립트
+    evaluate.py              # 모델 평가 스크립트
+    inference.py             # 단일 이미지 추론 스크립트
     ```
 
 ### 2.4. 프로세스 뷰 (Process View)
@@ -147,7 +146,7 @@
 프로젝트의 루트 디렉토리에서 다음 명령어를 실행합니다.
 
 ```bash
-python -m swin_aoi_system.generate_synthetic_data --config swin_aoi_system/configs/generation/synthetic_data_config.yaml
+python -m generate_synthetic_data --config configs/generation/synthetic_data_config.yaml
 ```
 
 **3. 결과 확인:**
@@ -159,7 +158,7 @@ python -m swin_aoi_system.generate_synthetic_data --config swin_aoi_system/confi
 다양한 형태의 검은색 이물 템플릿을 자동으로 생성하려면 아래 스크립트를 실행하세요.
 
 ```bash
-python -m swin_aoi_system.make_example_defect_template
+python -m make_example_defect_template
 ```
 
 이 스크립트는 `dataset_root/defect_templates/` 폴더에 타원, 사각형, 다각형, 선 등 다양한 형태의 검은색 이물 PNG 파일을 생성합니다.
