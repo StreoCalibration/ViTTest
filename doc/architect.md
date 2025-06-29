@@ -159,7 +159,7 @@ python -m swin_aoi_system.generate_synthetic_data --config swin_aoi_system/confi
 다양한 형태의 검은색 이물 템플릿을 자동으로 생성하려면 아래 스크립트를 실행하세요.
 
 ```bash
-python make_example_defect_template.py
+python -m swin_aoi_system.make_example_defect_template
 ```
 
 이 스크립트는 `dataset_root/defect_templates/` 폴더에 타원, 사각형, 다각형, 선 등 다양한 형태의 검은색 이물 PNG 파일을 생성합니다.

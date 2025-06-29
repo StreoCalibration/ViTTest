@@ -21,6 +21,6 @@ def clear_folder(folder_path):
                 print(f"폴더 삭제 실패: {file_path} - {e}")
 
 if __name__ == "__main__":
-    script_dir = os.path.dirname(__file__)
-    base_dir = os.path.join(script_dir, "dataset_root", "synthetic_data")
+    # 프로젝트 루트에서 실행된다고 가정하고 경로를 설정합니다.
+    base_dir = os.path.join("dataset_root", "synthetic_data")
     clear_folder(base_dir)
