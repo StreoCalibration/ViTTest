@@ -1,0 +1,15 @@
+# Python 캐시/임시 파일
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter Notebook 체크포인트
+.ipynb_checkpoints/
+
+# VSCode 설정
+.vscode/
+
+# 기타 임시/캐시 파일
+*.cache
+.cache/
