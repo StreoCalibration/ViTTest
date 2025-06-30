@@ -47,3 +47,18 @@ python -m generate_synthetic_data --config configs/generation/synthetic_data_con
 ```bash
 python -m train --config configs/training/train_config.yaml
 ```
+
+### 4. 모델 평가 (Model Evaluation)
+
+학습이 끝난 후에는 평가 스크립트를 사용하여 모델의 성능을 확인할 수 있습니다.
+
+```bash
+python evaluate.py --model-path outputs/training_results/final_model.pth --data-root dataset_root
+```
+
+`--data-root` 인자는 `real_data`와 `synthetic_data` 폴더를 포함하는 최상위 디렉터리(`dataset_root`)를 가리켜야 합니다. 
+잘못하여 `dataset_root/synthetic_data/images` 경로를 지정하면 데이터가 없다는 오류가 발생하므로 주의하세요.
+
+필요에 따라 `--data-source`, `--iou-threshold`, `--score-threshold` 등의 옵션을 조정하여 평가 기준을 변경할 수 있습니다.
+
+평가 결과로 Precision, Recall, F1-score가 출력됩니다.
